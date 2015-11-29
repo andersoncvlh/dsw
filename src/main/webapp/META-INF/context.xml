@@ -1,0 +1,10 @@
+<Context path="/PoolConexao">
+	
+	 <Resource name="jdbc/festa" auth="Container"
+	     type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver"
+	     url="jdbc:mysql://198.71.227.94:3306/festonomico"
+	     username="festonomico" password="100anos" 
+	     maxActive="100" maxIdle="30" maxWait="10000"/>
+	 
+	 
+</Context>
