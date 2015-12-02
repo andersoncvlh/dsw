@@ -1,20 +1,14 @@
-﻿package br.com.festonomico.daoimpl;
-
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.log4j.Logger;
+﻿package br.com.festonomico.dao.impl;
 
 import br.com.festonomico.dao.ProdutoDao;
 import br.com.festonomico.jdbc.ConnectionDS;
-import br.com.festonomico.jdbc.ConnectionFactory;
 import br.com.festonomico.modelo.Produto;
 import br.com.festonomico.modelo.TipoFesta;
+import org.apache.log4j.Logger;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe responsável por prover a implementação dos métodos

@@ -1,10 +1,9 @@
-package br.com.festonomico.serviceImpl.test;
-
-import org.junit.Test;
+package br.com.festonomico.service.impl.test;
 
 import br.com.festonomico.modelo.Usuario;
 import br.com.festonomico.service.UsuarioService;
-import br.com.festonomico.serviceImpl.UsuarioServiceImpl;
+import br.com.festonomico.service.impl.UsuarioServiceImpl;
+import org.junit.Test;
 
 public class UsuarioServiceImplTest {
 

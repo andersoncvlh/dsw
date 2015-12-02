@@ -1,15 +1,14 @@
 package br.com.festonomico.logica;
 
-import java.util.ArrayList;
-import java.util.List;
+import br.com.festonomico.dao.ProdutoDao;
+import br.com.festonomico.dao.impl.ProdutoDaoImpl;
+import br.com.festonomico.modelo.Produto;
+import br.com.festonomico.modelo.TipoFesta;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import br.com.festonomico.dao.ProdutoDao;
-import br.com.festonomico.daoimpl.ProdutoDaoImpl;
-import br.com.festonomico.modelo.Produto;
-import br.com.festonomico.modelo.TipoFesta;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdicionaProdutoLogica implements Logica{
 
@@ -34,8 +33,8 @@ public class AdicionaProdutoLogica implements Logica{
 		//instancia ProdutoDAO e salva no BD os dados
 		ProdutoDao dao = new ProdutoDaoImpl();
 		dao.insereProduto(produto);
-		
-		return "produto-adicionado.jsp";
+
+		return "produtoAdicionado.jsp";
 	}
 	
 

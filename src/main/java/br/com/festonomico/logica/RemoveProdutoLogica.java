@@ -1,11 +1,11 @@
 package br.com.festonomico.logica;
 
+import br.com.festonomico.dao.ProdutoDao;
+import br.com.festonomico.dao.impl.ProdutoDaoImpl;
+import br.com.festonomico.modelo.Produto;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import br.com.festonomico.dao.ProdutoDao;
-import br.com.festonomico.daoimpl.ProdutoDaoImpl;
-import br.com.festonomico.modelo.Produto;
 
 public class RemoveProdutoLogica implements Logica{
 
