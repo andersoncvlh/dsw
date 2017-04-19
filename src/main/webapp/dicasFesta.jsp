@@ -1,15 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="./resources/bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="./resources/bootstrap/css/bootstrap-theme.min.css" />
-</head>
-<body>
+<jsp:include page="template/header.jspf"></jsp:include>
+<jsp:include page="template/barra_superior.jspf"></jsp:include>
 	<p class="text-justify " >
 		Festa infantil
 		1. Saiba o quanto você está disposta a pagar
@@ -38,5 +28,4 @@
 
 		<cite>http://delas.ig.com.br/casa/servicos/25-dicas-para-dar-uma-festa-em-casa/n1597665233024.html</cite>
 	</p>
-</body>
-</html>
+<jsp:include page="template/footer.jspf"></jsp:include>

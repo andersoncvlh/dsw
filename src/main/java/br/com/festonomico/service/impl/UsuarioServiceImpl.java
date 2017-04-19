@@ -1,11 +1,10 @@
-package br.com.festonomico.serviceImpl;
-
-import org.apache.log4j.Logger;
+package br.com.festonomico.service.impl;
 
 import br.com.festonomico.dao.UsuarioDao;
-import br.com.festonomico.daoimpl.UsuarioDaoImpl;
+import br.com.festonomico.dao.impl.UsuarioDaoImpl;
 import br.com.festonomico.modelo.Usuario;
 import br.com.festonomico.service.UsuarioService;
+import org.apache.log4j.Logger;
 
 /**
  * Classe responsável por prover serviços de inclusão, 
@@ -21,8 +20,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public int obterIdUsuarioPorEmailNome(String email, String nome) {
-		int retorno = 0;
-		return retorno;
+		return 0;
 	}
 	
 	/**
@@ -34,13 +32,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 	 */
 	
 	private boolean validarCamposObrigatorios(String email, String nome, String senha) {
-		if(email!= null && !email.equals("")
-				&& senha!=null && !senha.equals("")
-				&& nome!=null && !nome.equals("")) {
-			return true;
-		}else {
-			return false;
-		}
+		return email != null && !email.equals("")
+				&& senha != null && !senha.equals("")
+				&& nome != null && !nome.equals("");
 	}
 	
 	public UsuarioDao getDao() {
@@ -48,7 +42,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	public Usuario obterUsuarPorId(int id) {
-		Usuario usuario = new Usuario();
+		Usuario usuario;
 		
 		usuario = getDao().obterUsuarPorId(id);
 		
@@ -65,7 +59,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	public void excluirUsuario(Usuario usuario) {
-		if(usuario.getCodUsuario()==null || usuario.getCodUsuario().equals("") || usuario.getCodUsuario()<=0) {
+		if (usuario.getCodUsuario() == null || usuario.getCodUsuario() <= 0) {
 			int codUsuario = obterIdUsuarioPorEmailNome(usuario.getEmail(), usuario.getNome());
 			usuario.setCodUsuario(codUsuario);
 		}

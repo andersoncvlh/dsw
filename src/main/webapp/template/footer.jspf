@@ -1,0 +1,15 @@
+<!--
+Created by IntelliJ IDEA.
+User: manoel
+Date: 12/2/15
+Time: 9:55 AM
+To change this template use File | Settings | File Templates.
+-->
+<footer>Trabalho Desenvolvido para a Disciplina de Desenvolvimento Web</footer>
+</div>
+<!-- JS & JQUERY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="./resources/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

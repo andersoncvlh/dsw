@@ -1,19 +1,17 @@
 package br.com.festonomico.logica;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import br.com.festonomico.dao.ProdutoDao;
-import br.com.festonomico.daoimpl.ProdutoDaoImpl;
+import br.com.festonomico.dao.impl.ProdutoDaoImpl;
 import br.com.festonomico.modelo.Produto;
 import br.com.festonomico.modelo.TipoFesta;
 import br.com.festonomico.modeloTO.ProdutoTO;
 import br.com.festonomico.util.ProdutoUtil;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListaProdutoLogica implements Logica{
 
@@ -42,17 +40,17 @@ public class ListaProdutoLogica implements Logica{
 		List<ProdutoTO> listaExibir = ProdutoUtil.toProduto(produtos);
 		request.setAttribute("produtos", listaExibir);
 		request.setAttribute("total", total);
-		return "lista-produtos.jsp";
+		return "listaProdutos.jsp";
 	}
 	
 	private List<Produto> calculoFesta(String tipoFesta, int quantidadePessoas) {
-		List<Produto> listaRetorno = new ArrayList<Produto>();
+		List<Produto> listaRetorno;
 		listaRetorno = choisseParty(tipoFesta, quantidadePessoas);
 		return listaRetorno;
 	}
 	
 	private List<Produto> choisseParty(String tipoFesta, int quantidadePessoas) {
-		List<Produto> retorno = new ArrayList<Produto>();
+		List<Produto> retorno = new ArrayList<>();
 		if(tipoFesta!=null && !tipoFesta.equals("")
 				&& tipoFesta.equalsIgnoreCase(TipoFesta.ADULTA.getDescricao())) {
 			retorno = calcularAdulta(tipoFesta, quantidadePessoas);
@@ -65,7 +63,7 @@ public class ListaProdutoLogica implements Logica{
 	
 	private List<Produto> calcularAdulta(String tipoFesta, int quantidadePessoas) {
 		List<Produto> produtosPadrao = dao.getLista(idSessao);
-		List<Produto> produtosFiltrados = new ArrayList<Produto>();
+		List<Produto> produtosFiltrados = new ArrayList<>();
 		for (Produto produto : produtosPadrao) {
 			if(produto.getTipoFesta().equals(TipoFesta.ADULTA)
 					|| produto.getTipoFesta().equals(TipoFesta.TODOS)) {
@@ -73,44 +71,39 @@ public class ListaProdutoLogica implements Logica{
 				produtosFiltrados.add(produto);
 			}
 		}
-		
-		
-		List<Produto> retorno = new ArrayList<Produto>();
+
+
+		List<Produto> retorno = new ArrayList<>();
+		adicionaProdutosFiltrados(quantidadePessoas, produtosFiltrados, retorno);
+
+		return retorno;
+	}
+
+	private void adicionaProdutosFiltrados(int quantidadePessoas, List<Produto> produtosFiltrados, List<Produto> retorno) {
 		for (Produto produto : produtosFiltrados) {
 			//	calcular qtd de produtos por pessoa
-			double produtosPorPessoas = produto.getQuantidade()*quantidadePessoas;
+			double produtosPorPessoas = produto.getQuantidade() * quantidadePessoas;
 			produto.setQuantidade(produtosPorPessoas);
-			double precoPorQtd = produto.getPreco()*produto.getQuantidade();
+			double precoPorQtd = produto.getPreco() * produto.getQuantidade();
 			produto.setPreco(precoPorQtd);
 			retorno.add(produto);
 		}
-		
-		return retorno;
 	}
-	
+
 	private List<Produto> calcularInfantil(String tipoFesta, int quantidadePessoas) {
 		List<Produto> produtosPadrao = dao.getLista(idSessao);
-		List<Produto> produtosFiltrados = new ArrayList<Produto>();
+		List<Produto> produtosFiltrados = new ArrayList<>();
 		for (Produto produto : produtosPadrao) {
 			if(produto.getTipoFesta().equals(TipoFesta.INFANTIL)
 					|| produto.getTipoFesta().equals(TipoFesta.TODOS)) {
 				produtosFiltrados.add(produto);
 			}
 		}
-		
-		
-		List<Produto> retorno = new ArrayList<Produto>();
-		for (Produto produto : produtosFiltrados) {
-			//	calcular qtd de produtos por pessoa
-			
-			double produtosPorPessoas = produto.getQuantidade()*quantidadePessoas;
-			produto.setQuantidade(produtosPorPessoas);
-			double precoPorQtd = produto.getPreco()*produto.getQuantidade();
-			produto.setPreco(precoPorQtd);
-			
-			retorno.add(produto);
-		}
-		
+
+
+		List<Produto> retorno = new ArrayList<>();
+		adicionaProdutosFiltrados(quantidadePessoas, produtosFiltrados, retorno);
+
 		return retorno;
 	}
 	

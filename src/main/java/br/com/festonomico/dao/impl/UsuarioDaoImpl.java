@@ -1,15 +1,14 @@
-package br.com.festonomico.daoimpl;
+package br.com.festonomico.dao.impl;
+
+import br.com.festonomico.dao.UsuarioDao;
+import br.com.festonomico.jdbc.ConnectionDS;
+import br.com.festonomico.modelo.Usuario;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import org.apache.log4j.Logger;
-
-import br.com.festonomico.dao.UsuarioDao;
-import br.com.festonomico.jdbc.ConnectionDS;
-import br.com.festonomico.modelo.Usuario;
 
 /**
  * Classe responsável pelas implementações dos métodos de comunicao com a tabela Usuario
